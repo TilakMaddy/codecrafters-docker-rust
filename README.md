@@ -1,4 +1,4 @@
-![progress-banner](https://codecrafters.io/landing/images/default_progress_banners/docker.png)
+[![progress-banner](https://app.codecrafters.io/progress/docker/1c1209f8-b761-4015-a033-9dae878b7979)](https://app.codecrafters.io/users/TilakMaddy)
 
 This is a starting point for Rust solutions to the
 ["Build Your Own Docker" Challenge](https://codecrafters.io/challenges/docker).
