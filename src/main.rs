@@ -1,3 +1,4 @@
+use std::process::exit;
 use anyhow::{Context, Result};
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
@@ -16,7 +17,5 @@ fn main() -> Result<()> {
             )
         })?;
 
-    output.wait()?;
-
-    Ok(())
+    exit(output.wait()?.code().unwrap_or(1));
 }
