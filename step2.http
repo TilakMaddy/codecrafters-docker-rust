@@ -1,0 +1,1 @@
+GET https://auth.docker.io/token?service=registry.docker.io&scope=repository:library/alpine:pull
