@@ -1,2 +1,0 @@
-GET https://registry.hub.docker.com/v2/library/alpine/manifests/latest
-Accept: application/vnd.docker.distribution.manifest.v2+json
