@@ -48,7 +48,7 @@ async fn main() -> Result<()> {
         .expect("failed to change current directory !");
 
     // 5. Pull the image layers and setup the environment
-    // pull_image_and_setup_env(image).await;
+    pull_image_and_setup_env(image).await;
 
     // 6. create /dev/null file inside chroot-ed dir 666
     create_dir_all("/dev")
