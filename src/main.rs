@@ -20,7 +20,6 @@ use tempfile::tempdir;
 async fn main() -> Result<()> {
 
     let args: Vec<_> = std::env::args().collect();
-    println!("Args: {:?}", args);
 
     let image = &args[2];
     let command = &args[3];
