@@ -80,7 +80,6 @@ async fn main() -> Result<()> {
 
 }
 
-
 #[tokio::test]
 async fn test_fetch_rss() {
     pull_image_and_setup_env("alpine").await;
@@ -108,7 +107,6 @@ async fn pull_image_and_setup_env(image: &str) {
     }
 
 }
-
 
 
 #[derive(Debug, Deserialize)]
