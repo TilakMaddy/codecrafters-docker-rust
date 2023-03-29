@@ -116,7 +116,7 @@ struct LayerMetadata {
 
 async fn fetch_blob(image: ImageDetails, digest: String, token: String) -> Bytes {
     let url = format!(
-        "https://52.1.184.176/v2/library/{}/blobs/{}",
+        "https://registry.hub.docker.com/v2/library/{}/blobs/{}",
         image.name,
         digest,
     );
@@ -147,7 +147,7 @@ impl RegistryResponse {
 
 async fn fetch_layers_metadata(image: ImageDetails, token: String) -> RegistryResponse {
     let url = format!(
-        "https://52.1.184.176/v2/library/{}/manifests/{}",
+        "https://registry.hub.docker.com/v2/library/{}/manifests/{}",
         image.name,
         image.tag,
     );
@@ -192,7 +192,7 @@ struct RSSUnit {
 
 async fn fetch_rss(image: ImageDetails) -> RSSUnit {
     let url = format!(
-        "https://52.1.184.176/v2/library/{}/manifests/{}",
+        "https://registry.hub.docker.com/v2/library/{}/manifests/{}",
         image.name,
         image.tag
     );
