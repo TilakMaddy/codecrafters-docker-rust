@@ -18,6 +18,8 @@ use reqwest::header::{ACCEPT, AUTHORIZATION};
 use tar::Archive;
 use tempfile::tempdir;
 
+static REGISTRY_URL: &str = "registry.hub.docker.com";
+
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -116,7 +118,8 @@ struct LayerMetadata {
 
 async fn fetch_blob(image: ImageDetails, digest: String, token: String) -> Bytes {
     let url = format!(
-        "https://registry.hub.docker.com/v2/library/{}/blobs/{}",
+        "https://{}/v2/library/{}/blobs/{}",
+        REGISTRY_URL,
         image.name,
         digest,
     );
@@ -147,7 +150,8 @@ impl RegistryResponse {
 
 async fn fetch_layers_metadata(image: ImageDetails, token: String) -> RegistryResponse {
     let url = format!(
-        "https://registry.hub.docker.com/v2/library/{}/manifests/{}",
+        "https://{}/v2/library/{}/manifests/{}",
+        REGISTRY_URL,
         image.name,
         image.tag,
     );
@@ -192,7 +196,8 @@ struct RSSUnit {
 
 async fn fetch_rss(image: ImageDetails) -> RSSUnit {
     let url = format!(
-        "https://registry.hub.docker.com/v2/library/{}/manifests/{}",
+        "https://{}/v2/library/{}/manifests/{}",
+        REGISTRY_URL,
         image.name,
         image.tag
     );
