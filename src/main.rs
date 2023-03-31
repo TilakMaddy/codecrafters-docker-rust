@@ -18,7 +18,7 @@ use reqwest::header::{ACCEPT, AUTHORIZATION};
 use tar::Archive;
 use tempfile::tempdir;
 
-static REGISTRY_URL: &str = "registry.hub.docker.com";
+static REGISTRY_URL: &str = "ghcr.io";
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 #[tokio::main]
