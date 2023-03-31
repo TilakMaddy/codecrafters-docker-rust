@@ -52,12 +52,13 @@ async fn main() -> Result<()> {
     // 5. Pull the image layers and setup the environment
     // pull_image_and_setup_env(image).await;
 
-    // let dirs = "bin,etc,home,lib,media,mnt,opt,proc,root,run,sbin,srv,sys,tmp,usr,var";
-    //
-    // for dir in dirs.split(",") {
-    //     create_dir_all(format!("/{}", dir))
-    //         .expect("Could not create dir !");
-    // }
+    let dirs = "bin,etc,home,lib,media,mnt,opt,proc,root,run,sbin,srv,sys,tmp,usr,var";
+
+    for dir in dirs.split(",") {
+        println!("{}", dir);
+        // create_dir_all(format!("/{}", dir))
+        //     .expect("Could not create dir !");
+    }
 
     // 6. create /dev/null file inside chroot-ed dir 666
     create_dir_all("/dev")
@@ -83,7 +84,7 @@ async fn main() -> Result<()> {
                 command, command_args
             )
         })?;
-    let code = output.wait()?.code().unwrap_or(1);
+    //let code = output.wait()?.code().unwrap_or(1);
     drop(temp_dir); // to prevent resource leaking !
     exit(code);
 
