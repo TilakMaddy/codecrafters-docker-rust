@@ -75,15 +75,15 @@ async fn main() -> Result<()> {
     };
 
     // 7. Execute the binary
-    let mut output = Command::new(command)
-        .args(command_args)
-        .spawn()
-        .with_context(|| {
-            format!(
-                "Tried to run '{}' with arguments {:?}",
-                command, command_args
-            )
-        })?;
+    // let mut output = Command::new(command)
+    //     .args(command_args)
+    //     .spawn()
+    //     .with_context(|| {
+    //         format!(
+    //             "Tried to run '{}' with arguments {:?}",
+    //             command, command_args
+    //         )
+    //     })?;
     //let code = output.wait()?.code().unwrap_or(1);
     drop(temp_dir); // to prevent resource leaking !
     exit(0);
