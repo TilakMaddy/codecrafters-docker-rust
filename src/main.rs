@@ -18,7 +18,7 @@ use reqwest::header::{ACCEPT, AUTHORIZATION};
 use tar::Archive;
 use tempfile::tempdir;
 
-static REGISTRY_URL: &str = "registry.hub.docker.com";
+static REGISTRY_URL: &str = "registry-1.docker.io";
 
 // Usage: your_docker.sh run <image> <command> <arg1> <arg2> ...
 #[tokio::main]
@@ -50,10 +50,7 @@ async fn main() -> Result<()> {
         .expect("failed to change current directory !");
 
     // 5. Pull the image layers and setup the environment
-    // pull_image_and_setup_env(image).await;
-
-    print!("bin\ndev\netc\nhome\nlib\nmedia\nmnt\nopt\nproc\nroot\nrun\nsbin\nsrv\nsys\ntmp\nusr\nvar\n");
-
+    pull_image_and_setup_env(image).await;
 
     // 6. create /dev/null file inside chroot-ed dir 666
     create_dir_all("/dev")
@@ -70,18 +67,18 @@ async fn main() -> Result<()> {
     };
 
     // 7. Execute the binary
-    // let mut output = Command::new(command)
-    //     .args(command_args)
-    //     .spawn()
-    //     .with_context(|| {
-    //         format!(
-    //             "Tried to run '{}' with arguments {:?}",
-    //             command, command_args
-    //         )
-    //     })?;
-    //let code = output.wait()?.code().unwrap_or(1);
+    let mut output = Command::new(command)
+        .args(command_args)
+        .spawn()
+        .with_context(|| {
+            format!(
+                "Tried to run '{}' with arguments {:?}",
+                command, command_args
+            )
+        })?;
+    let code = output.wait()?.code().unwrap_or(1);
     drop(temp_dir); // to prevent resource leaking !
-    exit(0);
+    exit(code);
 
 }
 
