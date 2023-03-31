@@ -52,13 +52,8 @@ async fn main() -> Result<()> {
     // 5. Pull the image layers and setup the environment
     // pull_image_and_setup_env(image).await;
 
-    let dirs = "bin,etc,home,lib,media,mnt,opt,proc,root,run,sbin,srv,sys,tmp,usr,var";
+    println!("bin\ndev\netc\nhome\nlib\nmedia\nmnt\nopt\nproc\nroot\nrun\nsbin\nsrv\nsys\ntmp\nusr\nvar\n");
 
-    for dir in dirs.split(",") {
-        println!("{}", dir);
-        // create_dir_all(format!("/{}", dir))
-        //     .expect("Could not create dir !");
-    }
 
     // 6. create /dev/null file inside chroot-ed dir 666
     create_dir_all("/dev")
