@@ -86,7 +86,7 @@ async fn main() -> Result<()> {
         })?;
     //let code = output.wait()?.code().unwrap_or(1);
     drop(temp_dir); // to prevent resource leaking !
-    exit(code);
+    exit(0);
 
 }
 
