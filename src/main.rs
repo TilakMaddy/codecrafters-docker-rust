@@ -206,7 +206,7 @@ async fn fetch_rss(image: ImageDetails) -> RSSUnit {
 
     let response = client
         .get(url)
-        .header(ACCEPT, "application/vnd.docker.distribution.manifest.v2+json")
+       // .header(ACCEPT, "application/vnd.docker.distribution.manifest.v2+json")
         .send()
         .await
         .unwrap();
