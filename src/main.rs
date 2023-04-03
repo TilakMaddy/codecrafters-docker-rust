@@ -117,12 +117,12 @@ struct LayerMetadata {
 }
 
 async fn fetch_blob(image: ImageDetails, digest: String, token: String) -> Bytes {
-    let url = format!(
+    let url = dbg!(format!(
         "https://{}/v2/library/{}/blobs/{}",
         REGISTRY_URL,
         image.name,
         digest,
-    );
+    ));
 
     let client = reqwest::Client::new();
     let response = client
@@ -170,7 +170,7 @@ async fn fetch_layers_metadata(image: ImageDetails, token: String) -> RegistryRe
 }
 
 async fn fetch_token(rss: RSSUnit) -> String {
-    let url = format!("{}?service={}&scope={}", rss.realm, rss.service, rss.scope);
+    let url = dbg!(format!("{}?service={}&scope={}", rss.realm, rss.service, rss.scope));
     let client = reqwest::Client::new();
     let response = client
         .get(url)
@@ -195,12 +195,12 @@ struct RSSUnit {
 }
 
 async fn fetch_rss(image: ImageDetails) -> RSSUnit {
-    let url = format!(
+    let url = dbg!(format!(
         "https://{}/v2/library/{}/manifests/{}",
         REGISTRY_URL,
         image.name,
         image.tag
-    );
+    ));
 
     let client = reqwest::Client::new();
 
